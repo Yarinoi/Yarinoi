@@ -17,25 +17,8 @@
 	var/datum/action/cooldown/spell/jaunt/ethereal_jaunt/lead/lead_jaunt = new(user)
 	lead_jaunt.Grant(user)
 
-var/datum/action/cooldown/spell/pointed/projectile/eldritchfinger_guns = new(user)
-	bola_summon.Grant(user)
-
-	RegisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK, PROC_REF(on_mansus_grasp))
-
-/datum/eldritch_knowledge/base_jungle/on_lose(mob/user)
-	UnregisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK)
-
-datum/eldritch_knowledge/base_jungle/proc/on_mansus_grasp(mob/living/source, mob/living/target)
-	///SIGNAL_HANDLER dont uncomment this it gets angy??
-
-	if(!ishuman(target))
-		return COMPONENT_BLOCK_HAND_USE
-	var/mob/living/carbon/human/human_target = target
-	human_target.Immobilize(1 SECONDS)
-	var/mob/living/carbon/human/heretic_self = source
-	heretic_self.adjustBruteLoss(-10)
-	heretic_self.adjustFireLoss(-10)
-	heretic_self.adjustToxLoss(-10)
+var/datum/action/cooldown/spell/pointed/projectile/eldritch_gun = new(user)
+	eldrtich_gun.Grant(user)
 
 /datum/eldritch_knowledge/eldritch_shield
 	name = "T1 - Xibalba's Protection"
