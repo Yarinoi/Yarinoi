@@ -46,7 +46,7 @@ var/datum/action/cooldown/spell/pointed/projectile/eldritch_gun = new(user)
 	gain_text = "Your patron knows the battles you'll fight before even you do, take their boon and ready yourself for the storm."
 	desc = "Create a wall of vines to block passage from heathens."
 	cost = 1
-	spell_to_add = /datum/action/cooldown/spell/forcewall/vines
+	spell_to_add = /datum/action/cooldown/spell/rod_form/eldritch
 	route = PATH_LEAD
 	tier = TIER_2	
 
