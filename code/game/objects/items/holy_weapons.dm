@@ -554,6 +554,23 @@
 			playsound(user, 'sound/items/sheath.ogg', 25, TRUE)
 		sheath.swords = TRUE
 
+/obj/item/nullrod/bat
+	icon = 'icons/obj/weapons/misc.dmi'
+	icon_state = "baseball_bat_metal"
+	item_state = "baseball_bat_metal"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+	name = "Ashley Bat"
+	desc = "Purification in progress..."
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT
+	block_chance = 0
+	sharpness = SHARP_NONE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	menutab = MENU_WEAPON
+	additional_desc = "An exceptionally large sword, capable of occasionally deflecting blows."
+
 
 /*---------------------------------------------------------------------------
 |
