@@ -47,10 +47,9 @@
 /datum/martial_art/cqc/hos
 	id = MARTIALART_CQC_HOS
 	no_guns = TRUE
-	no_gun_message = "You are physically incapable of pulling the trigger on any gun that isnt your own!"
-	var/gun_exceptions = list(/obj/item/gun/energy/e_gun/hos, /obj/item/gun/energy/laser/captain)
+	no_gun_message = "You find yourself physically incapable of pulling the trigger!"
+	gun_exceptions = list(/obj/item/gun/energy/e_gun/hos, /obj/item/gun/energy/laser/captain)
 	help_verb = /mob/living/carbon/human/proc/CQC_help/hos
-	
 
 /**
   * check_streak proc
@@ -335,6 +334,19 @@
 	attacker.Knockdown(60)
 	user.adjustStaminaLoss(10)	//Can't block forever. Really, if this becomes a problem you're already screwed.
 
+///this should get rid of the instant aggro grab. ew bad.
+
+/datum/martial_art/cqc/hos/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
+	if(A.a_intent == INTENT_GRAB && A!=D && (can_use(A) && can_use(D))) // A!=D prevents grabbing yourself
+		add_to_streak("G",D)
+		if(check_streak(A,D)) //if a combo is made no grab upgrade is done
+			return TRUE
+		if(A.grab_state < 1)
+			restraining = FALSE
+		return TRUE
+	else
+		return FALSE
+
 /**
   * CQC help proc
   *
@@ -369,7 +381,6 @@
 	to_chat(usr, span_notice("<b>All of your unarmed attacks deal stamina damage instead of your normal physical damage type</b>"))
 
 	to_chat(usr, span_notice("<b>Disarm Intent</b> Has a chance to disarm the opponent's main hand, and immediately pick up the item if successful"))
-	to_chat(usr, span_notice("<b>Grab Intent</b> Will stun opponents for a short second, allowing you to quickly increase the strength of your grabs"))
 	to_chat(usr, span_notice("<b>Harm Intent</b> Will deal a competitive amount of stamina damage, and hitting a standing opponent while you are prone will both knock them down and stand you up"))
 
 	to_chat(usr, "[span_notice("Slam")]: Grab Harm. Slam opponent into the ground, knocking them down and dealing decent stamina damage.")
@@ -379,4 +390,4 @@
 	to_chat(usr, "[span_notice("Consecutive CQC")]: Harm Harm Harm Harm Harm. Offensive move, deals bonus stamina damage and knocking down on the last hit.")
 
 	to_chat(usr, "<b><i>In addition, by having your throw mode on when being attacked, you enter an active defense mode where you have a chance to counter attacks done to you. Beware, counter-attacks are tiring and you won't be able to defend yourself forever!</i></b>")
-	to_chat(usr, "<b><i>Lastly, in order to comply with certain galactic regulations, nanites have been installed into you that prevent you from firing any gun that isnt the NT-S02 MultiPhase Energy Gun and the captain's antique laser gun.</i></b>")
+	to_chat(usr, "<b><i>Lastly, in order to comply with certain galactic regulations, nanites have been installed into you that prevent you from firing any gun that arent the NT-S02 MultiPhase Energy Gun and the captain's antique laser gun.</i></b>")
