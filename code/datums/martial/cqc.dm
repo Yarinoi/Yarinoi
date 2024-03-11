@@ -44,6 +44,14 @@
 		return FALSE
 	return ..()
 
+/datum/martial_art/cqc/hos
+	id = MARTIALART_CQC_HOS
+	no_guns = TRUE
+	no_gun_message = "You are physically incapable of pulling the trigger on any gun that isnt your own!"
+	var/gun_exceptions = list(/obj/item/gun/energy/e_gun/hos, /obj/item/gun/energy/laser/captain)
+	help_verb = /mob/living/carbon/human/proc/CQC_help/hos
+	
+
 /**
   * check_streak proc
   *
@@ -351,3 +359,24 @@
 	to_chat(usr, "[span_notice("Consecutive CQC")]: Harm Harm Harm Harm Harm. Offensive move, deals bonus stamina damage and knocking down on the last hit.")
 
 	to_chat(usr, "<b><i>In addition, by having your throw mode on when being attacked, you enter an active defense mode where you have a chance to counter attacks done to you. Beware, counter-attacks are tiring and you won't be able to defend yourself forever!</i></b>")
+
+/mob/living/carbon/human/proc/CQC_help/hos()
+	set name = "Remember The Basics"
+	set desc = "You try to remember some of the basics of CQC."
+	set category = "CQC"
+	to_chat(usr, "<b><i>You try to remember some of the basics of CQC.</i></b>")
+
+	to_chat(usr, span_notice("<b>All of your unarmed attacks deal stamina damage instead of your normal physical damage type</b>"))
+
+	to_chat(usr, span_notice("<b>Disarm Intent</b> Has a chance to disarm the opponent's main hand, and immediately pick up the item if successful"))
+	to_chat(usr, span_notice("<b>Grab Intent</b> Will stun opponents for a short second, allowing you to quickly increase the strength of your grabs"))
+	to_chat(usr, span_notice("<b>Harm Intent</b> Will deal a competitive amount of stamina damage, and hitting a standing opponent while you are prone will both knock them down and stand you up"))
+
+	to_chat(usr, "[span_notice("Slam")]: Grab Harm. Slam opponent into the ground, knocking them down and dealing decent stamina damage.")
+	to_chat(usr, "[span_notice("CQC Kick")]: Disarm Harm. Knocks opponent away and slows them. Deals heavy stamina damage to prone opponents, as well as muting them for a short time.")
+	to_chat(usr, "[span_notice("Restrain")]: Grab Grab. Locks opponents into a restraining position, making your grab harder to break out of. Disarm to begin a chokehold which deal gradual oxygen damage until the opponent is unconscious, with the damage increasing based on their stamina damage. Failing to complete the chokehold will weaken and possibly break your grab.")
+	to_chat(usr, "[span_notice("Pressure")]: Disarm Grab. Disables the targeted limb or a random limb if the head or chest are targeted, as well as forcing the target to drop anything they are holding.")
+	to_chat(usr, "[span_notice("Consecutive CQC")]: Harm Harm Harm Harm Harm. Offensive move, deals bonus stamina damage and knocking down on the last hit.")
+
+	to_chat(usr, "<b><i>In addition, by having your throw mode on when being attacked, you enter an active defense mode where you have a chance to counter attacks done to you. Beware, counter-attacks are tiring and you won't be able to defend yourself forever!</i></b>")
+	to_chat(usr, "<b><i>Lastly, in order to comply with certain galactic regulations, nanites have been installed into you that prevent you from firing any gun that isnt the NT-S02 MultiPhase Energy Gun and the captain's antique laser gun.</i></b>")
