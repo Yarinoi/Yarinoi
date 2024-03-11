@@ -27,3 +27,8 @@
 	user.adjustBruteLoss(6)
 	user.adjustFireLoss(6)
 	qdel(src)
+
+/obj/item/book/granter/martial/cqc/hos
+	martial = /datum/martial_art/cqc/hos
+	name = "CQC manual"
+	desc = "A small, yet slightly thicker then usual, black manual. There are drawn instructions of tactical hand-to-hand combat, as well as a miniature nanite implanter you are required to use in order to read them."
