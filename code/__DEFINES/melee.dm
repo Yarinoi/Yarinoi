@@ -8,6 +8,7 @@
 #define MARTIALART_KRAVMAGA "krav maga"
 #define MARTIALART_CQC "CQC"
 #define MARTIALART_CQC_COOK "CQC cook"
+#define MARTIALART_CQC_HOS "CQC hos"
 #define MARTIALART_PLASMAFIST "plasma fist"
 #define MARTIALART_FLYINGFANG "flying fang"
 #define MARTIALART_HUNTERFU "hunterfu"
