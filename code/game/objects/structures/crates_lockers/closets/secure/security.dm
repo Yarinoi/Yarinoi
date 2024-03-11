@@ -64,6 +64,7 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/loaded(src)
 	new /obj/item/gun/energy/e_gun/hos(src)
+	new /obj/item/book/granter/martial/cqc/hos(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/armory(src)
